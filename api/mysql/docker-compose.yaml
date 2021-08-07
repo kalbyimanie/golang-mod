@@ -1,0 +1,43 @@
+version: "3.8"
+services: 
+  percona:
+    container_name: "percona_sql"
+    build:
+      context: .
+      dockerfile: mysql.Dockerfile
+    command: 
+      - --character-set-server=utf8 
+      - --collation-server=utf8_general_ci
+    ports: 
+      - "3306:3306"
+    environment: 
+      - MYSQL_ROOT_PASSWORD_FILE=/etc/root_pass
+      - MYSQL_USER=dev1
+      - MYSQL_PASSWORD=dev_test
+      - MYSQL_DATABASE=local
+    volumes: 
+      - "./config/secret.env:/etc/root_pass:rw"
+      - "./config/my.cnf:/etc/my.cnf.d/my.cnf"
+      - "./data:/data:rw"
+    networks: 
+      - web_dev
+  
+  db_connect:
+    depends_on: 
+      - "percona"
+    container_name: "db_connect"
+    build: 
+      context: .
+      dockerfile: db-connect.Dockerfile
+    environment: 
+      - DB_HOST=percona_sql
+      - DB_USERNAME=dev1
+      - DB_PASS=dev_test
+      - DB_PORT=3306
+      - DB_NAME=local
+    networks: 
+      - web_dev
+
+networks: 
+  web_dev:
+    name: web_dev

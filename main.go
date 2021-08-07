@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"runtime"
 
 	// "os"
 
@@ -30,6 +31,7 @@ func handleRequest() {
 }
 
 func main() {
+	fmt.Printf("Go version: %s\n", runtime.Version())
 	fmt.Println("Server starting on port 80....")
 	handleRequest()
 }
