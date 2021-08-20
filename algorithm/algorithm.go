@@ -2,7 +2,9 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -17,9 +19,13 @@ func insertArray(a []int, i int) []int {
 	a = append(a, i)
 	return a
 }
-
 func main() {
 
+	// read from stdin
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Printf("input text")
+	text, _ := reader.ReadString('\n')
+	fmt.Printf("%v", text)
 	type human struct {
 		name  string
 		skill string
