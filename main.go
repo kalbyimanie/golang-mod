@@ -29,8 +29,13 @@ func handleRequest(port string) {
 
 func main() {
 	port := os.Getenv("PORT_NUMBER")
-	fmt.Printf("Go version: %s\n", runtime.Version())
-	fmt.Printf("Server starting on port %s....", port)
-	fmt.Println()
-	handleRequest(port)
+	if len(port) == 0 {
+		fmt.Println("required env `PORT_NUMBER`")
+	} else {
+		fmt.Printf("Go version: %s\n", runtime.Version())
+		fmt.Printf("Server starting on port %s....", port)
+		fmt.Println()
+		handleRequest(port)
+	}
+
 }

@@ -1,0 +1,9 @@
+version: "3.8"
+services: 
+  web:
+    container_name: web
+    environment: 
+    - PORT_NUMBER=8081
+    build: 
+      context: .
+      dockerfile: go.Dockerfile
