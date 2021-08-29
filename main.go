@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"runtime"
 
 	"github.com/gorilla/mux"
@@ -19,15 +20,17 @@ func feedPage(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Welcome to the FeedPage!")
 }
 
-func handleRequest() {
+func handleRequest(port string) {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/home", homePage)
 	router.HandleFunc("/feed", feedPage)
-	log.Fatal(http.ListenAndServe(":80", router))
+	log.Fatal(http.ListenAndServe(":"+port, router))
 }
 
 func main() {
+	port := os.Getenv("PORT_NUMBER")
 	fmt.Printf("Go version: %s\n", runtime.Version())
-	fmt.Println("Server starting on port 80....")
-	handleRequest()
+	fmt.Printf("Server starting on port %s....", port)
+	fmt.Println()
+	handleRequest(port)
 }
