@@ -6,8 +6,6 @@ import (
 	"net/http"
 	"runtime"
 
-	// "os"
-
 	"github.com/gorilla/mux"
 )
 
@@ -25,9 +23,7 @@ func handleRequest() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/home", homePage)
 	router.HandleFunc("/feed", feedPage)
-	// application_port := os.LookupEnv("APPLICATION_PORT")
 	log.Fatal(http.ListenAndServe(":80", router))
-	// log.Fatal(http.ListenAndServe(":"+application_port, router))
 }
 
 func main() {
