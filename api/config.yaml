@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+database:
+  dbname: "local"
+  dbuser: "dev1"
+  dbpassword: "dev_test"
+  dbport: "3306"
+  dbhost: "127.0.0.1"
