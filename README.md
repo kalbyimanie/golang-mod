@@ -1,13 +1,13 @@
 # golang-mod
 golang-mod repository is simple golang rest-api application which is used for go rest-api sample backend service. <br /> <br />
 ### serving endpoints
-the following list consist of predefined endpoints
+the following list consists of predefined endpoints
 | endpoints  | 
 | -------------
 | /home  |
 | /feed  |
 <br /><br />
-### required environtment variables
+### required environment variables
 set the following environment variables for service runtime
 | env var name  | value type |
 | ------------- | ------------- |
