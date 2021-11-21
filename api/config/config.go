@@ -10,7 +10,7 @@ type Configurations struct {
 
 // ServerConfigurations exported
 type ServerConfigurations struct {
-	Port int
+	Ports int
 }
 
 // DatabaseConfigurations exported

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"golang-mod/api/config"
 	"log"
+	"os"
 
 	"github.com/spf13/viper"
 
@@ -44,6 +45,13 @@ func dbConn(username string, userpass string, dbname string, dbhost string, dbpo
 }
 
 func main() {
+
+	// test env
+	viper.BindEnv("id")
+	fmt.Printf("before %s\n", viper.Get("id"))
+	os.Setenv("ID", "10")
+	fmt.Printf("after %s\n", viper.Get("id"))
+
 	// Set the file name of the configurations file
 	viper.SetConfigName("config")
 
